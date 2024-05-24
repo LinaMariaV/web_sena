@@ -1,0 +1,17 @@
+.carrousel-container {
+    height: 400px;
+  }
+  .carrousel-container .carousel-inner {
+    height: 100%;
+  }
+  .carrousel-container  .carousel-item {
+    height: 100%;
+    position: relative;
+  }
+  .carrousel-container  .carrousel-img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .spacin-carrousel{
+    margin: 40px ;
+  }

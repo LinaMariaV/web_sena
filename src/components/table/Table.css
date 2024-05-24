@@ -1,0 +1,8 @@
+.bd-table {
+    --bd-example-padding: 1rem;
+    position: relative;
+    padding: var(--bd-example-padding);
+    margin: 0 -1.5rem 1rem;
+    border: solid #dee2e6;
+    border-width: 1px 0;
+}
