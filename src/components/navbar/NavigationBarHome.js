@@ -1,5 +1,5 @@
 import { useSelector} from "react-redux";
-import ButtonComponent from "./Button";
+import ButtonComponent from "../button/Button";
 import NavigationBar from "./NavigationBar";
 
 function NavigationBarHome() {

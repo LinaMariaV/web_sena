@@ -2,7 +2,7 @@ import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import register from "../../assets/image-register.png";
 import React, { useState } from "react";
-import { postRegister } from "./Register.service";
+import { postRegister } from "../../services/auth.service";
 
 function Register() {
   const [name, setName] = useState("");
@@ -27,7 +27,6 @@ function Register() {
       .catch((e) => {
         console.log("err", e);
         setError(true);
-        
       });
   };
 
@@ -103,12 +102,27 @@ function Register() {
                 Registrarse
               </Button>
 
-              { password  === password2 ? null : <div class="alert alert-warning" role="alert"> Las contraseñas no coinciden. </div> }
-          
-              {error ? <div class="alert alert-danger" role="alert"> El usuario ya se encuentra registrado. </div> : null}  
-              
-              {success ?  <div class="alert alert-info" role="alert"> Usuario registrado correctamente, ya puede iniciar sesion. </div> : null}
-              
+              {password === password2 ? null : (
+                <div class="alert alert-warning" role="alert">
+                  {" "}
+                  Las contraseñas no coinciden.{" "}
+                </div>
+              )}
+
+              {error ? (
+                <div class="alert alert-danger" role="alert">
+                  {" "}
+                  El usuario ya se encuentra registrado.{" "}
+                </div>
+              ) : null}
+
+              {success ? (
+                <div class="alert alert-info" role="alert">
+                  {" "}
+                  Usuario registrado correctamente, ya puede iniciar sesion.{" "}
+                </div>
+              ) : null}
+
               <a href="/login"> ¿Ya tienes cuenta? Inicia sesion </a>
             </Col>
 

@@ -16,4 +16,14 @@ const getMe = async (token) => {
   return response.data;
 };
 
-export { postLogin, getMe };
+const postRegister = async (name, email, password, phone) => {
+  const response = await axios.post(API_URL + "register", {
+    name,
+    email,
+    password,
+    phone,
+  });
+  return response.data;
+};
+
+export { postLogin, getMe, postRegister };

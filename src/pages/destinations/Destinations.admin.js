@@ -1,6 +1,6 @@
 import "./Destinations.css";
-import "../../components/card/Card.css";
-import CardI from "../../components/card/Card";
+import "../../components/Card.css";
+import CardI from "../../components/Card";
 import paris from "../../assets/paris.jpg";
 import bali from "../../assets/bali.jpg";
 import cali from "../../assets/cali.jpg";
@@ -14,7 +14,7 @@ import newyork from "../../assets/newyork.jpg";
 import bogota from "../../assets/bogota.jpg";
 
 import machupichu from "../../assets/machu-picchu.jpg";
-import ButtonComponent from "../../components/button/Button";
+import ButtonComponent from "../../components/Button";
 
 function Destinations() {
   return (

@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./Navigation.css";
-import { logoutAction } from "../storages/auth";
+import { logoutAction } from "../../storages/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NavigationBar({ className, enableTitle = true }) {
@@ -15,7 +15,7 @@ function NavigationBar({ className, enableTitle = true }) {
   const dispatch = useDispatch();
 
   return (
-    <Navbar expand="lg" className={className}>
+    <Navbar expand="lg" className={className+ ' justify-content-center'}>
       <Container className="container-margin">
         <div className="fw-semibold ">
           <Navbar.Brand href="/">
@@ -28,18 +28,30 @@ function NavigationBar({ className, enableTitle = true }) {
             <Nav.Link href="/">Inicio</Nav.Link>
             <Nav.Link href="/destinations">Destinos</Nav.Link>
             <Nav.Link href="/info">Info</Nav.Link>
-            {loginstatus == true ? (
+            {loginstatus === true ? (
               <NavDropdown title="Menu" id="basic-nav-dropdown">
                 <NavDropdown.ItemText className="fw-bold">
                   <FontAwesomeIcon icon="fa-solid fa-user" className="me-2" />
                   {user_name}
                 </NavDropdown.ItemText>
+
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.1">Trips</NavDropdown.Item>
-                {user_role === "admin" ? (<><NavDropdown.Item href="#action/3.2">Ciudades</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Destinos</NavDropdown.Item></>) : null
-              }
-                 
+
+                {user_role === "admin" ? (
+                  <>
+                    <NavDropdown.Item href="/trips">Ciudades</NavDropdown.Item>{" "}
+                    <NavDropdown.Divider />{" "}
+                    <NavDropdown.Item href="/trips_admin">
+                      {" "}
+                      Administrar viajes
+                    </NavDropdown.Item>{" "}
+                  </>
+                ) : (
+                  <NavDropdown.Item href="/trips_client">
+                    Mis viajes
+                  </NavDropdown.Item>
+                )}
+
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   onClick={() => dispatch(logoutAction())}

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState } from "react";
 import { loginAction } from "../../storages/auth";
-import { postLogin } from "./Login.service";
+import { postLogin } from "../../services/auth.service";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import register from "../../assets/image-register.png";

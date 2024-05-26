@@ -1,10 +1,10 @@
 import "./Home.css";
-import "../../components/Card.css";
-import "../../components/Icons.css";
+import "../../components/card/Card.css";
+import "../../components/styles/Icons.css";
 import parisfrance from "../../assets/paris-france.jpg";
 import bali from "../../assets/bali.jpg";
 import newyork from "../../assets/new-york.jpg";
-import ButtonComponent from "../../components/Button";
+import ButtonComponent from "../../components/button/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import suiza from "../../assets/suiza.jpg";
