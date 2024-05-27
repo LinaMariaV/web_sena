@@ -27,7 +27,7 @@ function Trips_admin() {
                     }
                   }
                 }
-                
+
                 for (let i = 0; i < restrips.data.length; i++) {
                   for (let j = 0; j < rescities.data.length; j++) {
                     if (
@@ -64,7 +64,7 @@ function Trips_admin() {
         <thead>
           <tr>
             <th scope="col">Id Viaje</th>
-            <th scope="col">Id de usuario</th>
+            <th scope="col">Nombre de Usuario</th>
             <th scope="col">Ciudad Origen</th>
             <th scope="col">Ciudad Destino</th>
             <th scope="col">Fecha ida</th>
@@ -77,6 +77,7 @@ function Trips_admin() {
           {trips.map((trip) => (
             <tr key={trip.id}>
               <th scope="row">{trip.id}</th>
+              <td>{trip.user_id}</td>
               <td>{trip.origin_city_id}</td>
               <td>{trip.destination_id}</td>
               <td>{trip.start_date}</td>

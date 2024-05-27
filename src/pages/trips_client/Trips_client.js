@@ -3,11 +3,14 @@ import { Row, Col, Button, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { getAllTrips } from "../../services/trips.service";
 import { getAllCities } from "../../services/cities.service";
+import { deleteTrip } from "../../services/trips.service";
 import { useState, useEffect } from "react";
 
 function Trips_client() {
   const tokenData = useSelector((state) => state.auth.token);
   const [trips, setTrips] = useState([]);
+
+  
 
   useEffect(() => {
     if (!tokenData || tokenData === "") {
@@ -39,6 +42,17 @@ function Trips_client() {
       });
   }, [tokenData]);
 
+  const deleteTriprequest = (id) => {
+    deleteTrip(tokenData, id)
+      .then((res) => {
+        console.log(res);
+        setTrips(trips.filter((trip) => trip.id !== id));
+      })
+      .catch((e) => {
+        console.log("err", e);
+      });
+  }
+
   return (
     <Row className="row gx-5 gy-3">
       <Col xs={12} md={6}>
@@ -66,13 +80,11 @@ function Trips_client() {
                       <td>{trip.destination_id}</td>
                       <td>{trip.start_date}</td>
                       <td>{trip.end_date}</td>
-                      <td>{trip.number_of_tickets}</td>
+                      <td>{trip.number_of_tickets}</td> 
 
                       <td className="flex-row d-flex">
-                        <Button variant="primary" className="me-2">
-                          <FontAwesomeIcon icon="fa-solid fa-pencil" />
-                        </Button>
-                        <Button variant="danger">
+                        <Button variant="danger"
+                        onClick={()=>deleteTriprequest(trip.id)}>
                           <FontAwesomeIcon icon="fa-solid fa-trash" />
                         </Button>
                       </td>
