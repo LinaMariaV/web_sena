@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:3001/api/u'cities/";
+const API_URL = "http://localhost:3001/api/cities/";
 
 const getAllCities = async (token) => {
   const response = await axios.get(API_URL, {
