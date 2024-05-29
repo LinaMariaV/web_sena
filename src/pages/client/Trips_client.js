@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { getAllTrips } from "../../services/trips.service";
+import { getAllTrips, postTrip } from "../../services/trips.service";
 import { getAllCities } from "../../services/cities.service";
 import { deleteTrip } from "../../services/trips.service";
+import { postTrip } from "../../services/trips.service";
 import { useState, useEffect } from "react";
 
 function Trips_client() {
   const tokenData = useSelector((state) => state.auth.token);
   const [trips, setTrips] = useState([]);
+  const [origin_city, setOrigin_city] = useState("")
+
 
   
 
@@ -42,6 +45,26 @@ function Trips_client() {
       });
   }, [tokenData]);
 
+  const postTriprequest = (
+    
+  ) => {
+    postTrip(
+      tokenData,
+      origin_city_id,
+      destination_id,
+      user_id,
+      start_date,
+      end_date,
+      number_of_tickets
+    )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log("err", e);
+      });
+  };
+
   const deleteTriprequest = (id) => {
     deleteTrip(tokenData, id)
       .then((res) => {
@@ -51,7 +74,7 @@ function Trips_client() {
       .catch((e) => {
         console.log("err", e);
       });
-  }
+  };
 
   return (
     <Row className="row gx-5 gy-3">
@@ -80,11 +103,13 @@ function Trips_client() {
                       <td>{trip.destination_id}</td>
                       <td>{trip.start_date}</td>
                       <td>{trip.end_date}</td>
-                      <td>{trip.number_of_tickets}</td> 
+                      <td>{trip.number_of_tickets}</td>
 
-                      <td >
-                        <Button variant="danger"
-                        onClick={()=>deleteTriprequest(trip.id)}>
+                      <td>
+                        <Button
+                          variant="danger"
+                          onClick={() => deleteTriprequest(trip.id)}
+                        >
                           <FontAwesomeIcon icon="fa-solid fa-trash" />
                         </Button>
                       </td>
@@ -165,7 +190,7 @@ function Trips_client() {
               </div>
             </div>
             <div className="d-flex justify-content-center mt-2">
-              <Button variant="primary">
+              <Button variant="primary" onClick={postTriprequest}>
                 <FontAwesomeIcon className="me-2" icon="fa-solid fa-save" />
                 Agregar Viaje
               </Button>

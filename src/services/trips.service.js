@@ -23,12 +23,12 @@ const postTrip = async (
   const response = await axios.post(
     API_URL + "create",
     {
-      origin_city_id,
-      destination_id,
-      user_id,
-      start_date,
-      end_date,
-      number_of_tickets,
+        origin_city_id,
+        destination_id,
+        user_id,
+        start_date,
+        end_date,
+        number_of_tickets,
     },
     {
       headers: {
