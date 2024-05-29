@@ -18,11 +18,13 @@ import { Provider } from "react-redux";
 import Layout from "./pages/layout/Layout";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import TripsAdmin from "./pages/trips_admin/Trips_admin";
-import TripsClient from "./pages/trips_client/Trips_client";
+import TripsAdmin from "./pages/admin/Trips_admin";
+import TripsClient from "./pages/client/Trips_client";
 import Register from "./pages/register/Register";
 import Destinations from "./pages/destinations/Destinations";
 import NoPage from "./pages/nopage/NoPage";
+import CitiesAdmin from "./pages/admin/cities_admin";
+import Useradmin from "./pages/admin/users_admin";
 
 // Fontawesome
 library.add(fas, fab, far);
@@ -38,8 +40,10 @@ root.render(
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/destinations" element={<Destinations />} />
+            <Route path="/users_admin" element={<Useradmin />} />
             <Route path="/trips_client" element={<TripsClient />} />
             <Route path="/trips_admin" element={<TripsAdmin />} />
+            <Route path="/cities_admin" element={<CitiesAdmin/>} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<NoPage />} />
