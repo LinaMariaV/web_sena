@@ -16,6 +16,10 @@
 .Back-image {
   position: relative;
 }
+.cont-home {
+  margin: 40px;
+  text-align: center;
+}
 
 .img-bg {
   position: absolute;
@@ -38,7 +42,108 @@
   text-justify: center;
 }
 
-.cont-home {
-  margin: 40px;
-  text-align: center;
+/* TESTIMONIALS SECTION START */
+.card.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: all 0.5s;
+  box-shadow: 0px 0px 0px 0px #cfcfcf;
+  padding: 20px;
+  transform: scale(1);
 }
+.card.testimonial:hover {
+  box-shadow: 0px 0px 10px 0px #bbbbbb;
+  transform: scale(1.05);
+}
+.customer-icon-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: white;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  margin-right: 10px;
+}
+.customer-icon-name.testimonial-1 {
+  background-color: #0071e3;
+}
+.customer-icon-name.testimonial-2 {
+  background-color: #ae6800;
+}
+.customer-icon-name.testimonial-3 {
+  background-color: #025f00;
+}
+.customer-icon-name.testimonial-4 {
+  background-color: #8e0000;
+}
+.customer-icon-name.testimonial-5 {
+  background-color: #4e01ab;
+}
+.customer-icon-name.testimonial-6 {
+  background-color: #707070;
+}
+.testimonial-text {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: #777777;
+}
+.testimonial-text::before {
+  content: '"';
+  font-size: 3rem;
+  color: #6c6c6c;
+  line-height: 7px;
+  position: relative;
+  top: 14px;
+  margin-right: 10px;
+}
+.testimonial-text::after {
+  content: '"';
+  font-size: 3rem;
+  color: #6c6c6c;
+  line-height: 7px;
+  position: relative;
+  top: 14px;
+  margin-left: 5px;
+}
+.customer-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+/* TESTIMONIALS SECTION END */
+
+/* QUESTIONS SECTION START */
+.card-questions-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.card-questions-icons svg {
+  transition: all 0.5s;
+  filter: drop-shadow(0 0 0.75rem #fff);
+}
+.card-questions-icons:hover svg {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 0.75rem #dfdfdf);
+}
+.card-questions-icons:hover .fa-dollar-sign {
+  color: #e3d400;
+}
+
+.card-questions-icons:hover .fa-map-location-dot {
+  color: #03c100;
+}
+
+.card-questions-icons:hover .fa-people-line {
+  color: #0071e3;
+}
+/* QUESTIONS SECTION END */

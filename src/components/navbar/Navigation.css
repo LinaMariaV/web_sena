@@ -33,3 +33,6 @@
   margin: 0 90px;
 }
 
+.move-nav-dropdown .dropdown-menu {
+  left: -30px;
+}

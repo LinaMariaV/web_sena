@@ -7,6 +7,7 @@ import newyork from "../../assets/new-york.jpg";
 import ButtonComponent from "../../components/button/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 import suiza from "../../assets/suiza.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InvitationSection from "./sections/InvitationSection";
@@ -14,8 +15,40 @@ import { useSelector } from "react-redux";
 
 function Home() {
   const loginstatus = useSelector((state) => state.auth.is_logged);
+  const testimonials_array = [
+    {
+      id: 1,
+      text: "¡Un servicio increíble! Todo fue perfecto y fácil de planear. ¡Definitivamente volveré a usarlo!",
+      customer_name: "Juan Pérez",
+    },
+    {
+      id: 2,
+      text: "Los mejores precios y destinos. Mi viaje a Suiza fue inolvidable gracias a ellos.",
+      customer_name: "María García",
+    },
+    {
+      id: 3,
+      text: "La atención al cliente fue excelente. Me ayudaron en cada paso del camino.",
+      customer_name: "Luis Rodríguez",
+    },
+    {
+      id: 4,
+      text: "Viajar con ellos fue la mejor decisión. Todo estuvo perfectamente organizado y sin complicaciones.",
+      customer_name: "Ana López",
+    },
+    {
+      id: 5,
+      text: "Gracias a su servicio, pude disfrutar de unas vacaciones increíbles a un precio inigualable.",
+      customer_name: "Carlos Mendoza",
+    },
+    {
+      id: 6,
+      text: "La experiencia fue fantástica, desde la reserva hasta el regreso. ¡Totalmente recomendable!",
+      customer_name: "Sofía Fernández",
+    },
+  ];
   return (
-    <>
+    <div className="container">
       <InvitationSection />
 
       <div className="container">
@@ -43,7 +76,11 @@ function Home() {
           </div>
 
           <div className="text-center">
-            <ButtonComponent className="home-button" text="Registrate" onClick={()=> (window.location.href="/register")} />
+            <ButtonComponent
+              className="home-button"
+              text="Registrate"
+              onClick={() => (window.location.href = "/register")}
+            />
           </div>
         </div>
       )}
@@ -83,61 +120,44 @@ function Home() {
 
       <div className="testimonials">
         <h2 className="text-center">Lo que dicen nuestros clientes</h2>
-        <Row>
-          <Col xs={12} md={4}>
-            <div className="testimonial">
-              <p>
-                "¡Un servicio increíble! Todo fue perfecto y fácil de planear.
-                ¡Definitivamente volveré a usarlo!"
-              </p>
-              <p className="customer-name">- Juan Pérez</p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="testimonial">
-              <p>
-                "Los mejores precios y destinos. Mi viaje a Suiza fue
-                inolvidable gracias a ellos."
-              </p>
-              <p className="customer-name">- María García</p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="testimonial">
-              <p>
-                "La atención al cliente fue excelente. Me ayudaron en cada paso
-                del camino."
-              </p>
-              <p className="customer-name">- Luis Rodríguez</p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="testimonial">
-              <p>
-                "Viajar con ellos fue la mejor decisión. Todo estuvo
-                perfectamente organizado y sin complicaciones."
-              </p>
-              <p className="customer-name">- Ana López</p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="testimonial">
-              <p>
-                "Gracias a su servicio, pude disfrutar de unas vacaciones
-                increíbles a un precio inigualable."
-              </p>
-              <p className="customer-name">- Carlos Mendoza</p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="testimonial">
-              <p>
-                "La experiencia fue fantástica, desde la reserva hasta el
-                regreso. ¡Totalmente recomendable!"
-              </p>
-              <p className="customer-name">- Sofía Fernández</p>
-            </div>
-          </Col>
+        <Row className="g-4">
+          {testimonials_array.map((testimonial) => (
+            <Col sm={12} md={6} lg={4} key={testimonial.id}>
+              <div className="card testimonial">
+                <p className="testimonial-text">{testimonial.text}</p>
+                <div className="customer-name">
+                  <div
+                    className={
+                      "customer-icon-name testimonial-" + testimonial.id
+                    }
+                  >
+                    {testimonial.customer_name.charAt(0)}
+                  </div>
+                  {testimonial.customer_name}
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning ms-2"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                </div>
+              </div>
+            </Col>
+          ))}
         </Row>
       </div>
 
@@ -151,27 +171,33 @@ function Home() {
 
         <Row>
           <Col>
-            <FontAwesomeIcon
-              className="icons-home"
-              icon="fa-solid fa-dollar-sign"
-            />
-            <h3 className="text-center">¡Los mejores precios!</h3>
+            <Card className="card-questions-icons">
+              <FontAwesomeIcon
+                className="icons-home"
+                icon="fa-solid fa-dollar-sign"
+              />
+              <h3 className="text-center">¡Los mejores precios!</h3>
+            </Card>
           </Col>
 
           <Col>
-            <FontAwesomeIcon
-              className="icons-home"
-              icon="fa-solid fa-map-location-dot"
-            />
-            <h3 className="text-center">¡Los mejores destinos!</h3>
+            <Card className="card-questions-icons">
+              <FontAwesomeIcon
+                className="icons-home"
+                icon="fa-solid fa-map-location-dot"
+              />
+              <h3 className="text-center">¡Los mejores destinos!</h3>
+            </Card>
           </Col>
 
           <Col>
-            <FontAwesomeIcon
-              className="icons-home"
-              icon="fa-solid fa-people-line"
-            />
-            <h3 className="text-center">¡La mejor atención!</h3>
+            <Card className="card-questions-icons">
+              <FontAwesomeIcon
+                className="icons-home"
+                icon="fa-solid fa-people-line"
+              />
+              <h3 className="text-center">¡La mejor atención!</h3>
+            </Card>
           </Col>
         </Row>
       </div>
@@ -201,7 +227,7 @@ function Home() {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

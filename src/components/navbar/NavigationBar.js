@@ -29,7 +29,7 @@ function NavigationBar({ className, enableTitle = true }) {
             <Nav.Link href="/destinations">Destinos</Nav.Link>
             <Nav.Link href="/info">Info</Nav.Link>
             {loginstatus === true ? (
-              <NavDropdown title="Menu" id="basic-nav-dropdown">
+              <NavDropdown title="Menu" id="basic-nav-dropdown" className="move-nav-dropdown">
                 <NavDropdown.ItemText className="fw-bold">
                   <FontAwesomeIcon icon="fa-solid fa-user" className="me-2" />
                   {user_name}
@@ -39,12 +39,17 @@ function NavigationBar({ className, enableTitle = true }) {
 
                 {user_role === "admin" ? (
                   <>
-                    <NavDropdown.Item href="/trips">Ciudades</NavDropdown.Item>{" "}
-                    <NavDropdown.Divider />{" "}
+                    <NavDropdown.Item href="/users_admin">Administrar usuarios</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="/cities_admin">
+                    
+                      Administrar ciudades
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
                     <NavDropdown.Item href="/trips_admin">
-                      {" "}
+                      
                       Administrar viajes
-                    </NavDropdown.Item>{" "}
+                    </NavDropdown.Item>
                   </>
                 ) : (
                   <NavDropdown.Item href="/trips_client">
