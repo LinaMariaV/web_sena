@@ -4,6 +4,7 @@ import { getAllTrips } from "../../services/trips.service";
 import { getAllCities } from "../../services/cities.service";
 import { getAllUsers } from "../../services/users.service";
 import { useState, useEffect } from "react";
+import { Col, Row, Table} from "react-bootstrap";
 
 function Trips_admin() {
   const tokenData = useSelector((state) => state.auth.token);
@@ -59,8 +60,15 @@ function Trips_admin() {
   }, [tokenData]);
 
   return (
-    <div class="bd-example">
-      <table class="table">
+
+    <Row className="row gx-5 gy-3">
+    <Col xs={12} >
+    <div className="card">
+      <div className="card-body">
+        <h5 className="text-center card-title">Viajes</h5>
+        <Table striped bordered hover>
+
+      
         <thead>
           <tr>
             <th scope="col">Id Viaje</th>
@@ -84,18 +92,21 @@ function Trips_admin() {
               <td>{trip.end_date}</td>
               <td>{trip.number_of_tickets}</td>
               <td>
-                <button className="btn btn-primary">
+                <button className="btn btn-primary me-3">
                   <FontAwesomeIcon icon="edit" />
                 </button>
-                <button className="btn btn-danger">
+                <button className="btn btn-danger ">
                   <FontAwesomeIcon icon="trash" />
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
+      </div>
     </div>
+    </Col>
+    </Row>
   );
 }
 export default Trips_admin;

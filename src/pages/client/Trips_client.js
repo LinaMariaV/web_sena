@@ -58,7 +58,7 @@ function Trips_client() {
       <Col xs={12} md={6}>
         <div className="card">
           <div className="card-body">
-            <h2 className="text-center">Mis viajes</h2>
+            <h2 className="text-center card-title">Mis viajes</h2>
             <div className="overflow-x-auto">
               <table className="table w-100">
                 <thead>
@@ -82,7 +82,7 @@ function Trips_client() {
                       <td>{trip.end_date}</td>
                       <td>{trip.number_of_tickets}</td> 
 
-                      <td className="flex-row d-flex">
+                      <td >
                         <Button variant="danger"
                         onClick={()=>deleteTriprequest(trip.id)}>
                           <FontAwesomeIcon icon="fa-solid fa-trash" />

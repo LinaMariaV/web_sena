@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
-import { getAllCities, getCity, postCity } from "../../services/cities.service";
-import { deleteCity } from "../../services/cities.service";
+import { getAllCities, deleteCity} from "../../services/cities.service";
+
 
 function Citiesadmin() {
   const tokenData = useSelector((state) => state.auth.token);
@@ -21,34 +21,22 @@ function Citiesadmin() {
         console.log("err", e);
       });
 
-    getCity(tokenData, id)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log("err", e);
-      });
-
-    deleteCity(tokenData, id)
-      .then((res) => {
-        console.log(res);
-        setCities(cities.filter((city) => city.id !== id));
-      })
-      .catch((e) => {
-        console.log("err", e);
-      });
+    
   }, [tokenData]);
 
   return (
     <Row className="row gx-5 gy-3">
-      <Col xs={12} md={6}>
+      <Col xs={12} >
         <div className="card">
           <div className="card-body">
-            <h5 className="card-title">Cities</h5>
+            <h5 className="text-center card-title">Cities</h5>
             <Table striped bordered hover>
               <thead>
                 <tr>
                   <th>Name</th>
+                    <th>Country</th>
+                    <th>Description</th>
+                    <th>Url imagen</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -56,10 +44,14 @@ function Citiesadmin() {
                 {cities.map((city) => (
                   <tr key={city.id}>
                     <td>{city.name}</td>
+                    <td>{city.country}</td>
+                    <td>{city.description}</td>
+                    <td>{city.url_image}</td>
                     <td>
                       <Button
+                      
                         variant="danger"
-                        onClick={() => deleteCityrequest(city.id)}
+                        //onClick={() => deleteCityrequest(city.id)}
                       >
                         Delete
                       </Button>
