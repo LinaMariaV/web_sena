@@ -22,6 +22,7 @@ import TripsAdmin from "./pages/admin/Trips_admin";
 import TripsClient from "./pages/client/Trips_client";
 import Register from "./pages/register/Register";
 import Destinations from "./pages/destinations/Destinations";
+import Info from "./pages/info/Info"; 
 import NoPage from "./pages/nopage/NoPage";
 import CitiesAdmin from "./pages/admin/cities_admin";
 import Useradmin from "./pages/admin/users_admin";
@@ -44,6 +45,7 @@ root.render(
             <Route path="/trips_client" element={<TripsClient />} />
             <Route path="/trips_admin" element={<TripsAdmin />} />
             <Route path="/cities_admin" element={<CitiesAdmin/>} />
+            <Route path="/info" element={<Info/>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<NoPage />} />
