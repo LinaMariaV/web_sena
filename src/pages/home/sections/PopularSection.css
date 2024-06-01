@@ -1,0 +1,36 @@
+/* POPULAR SECTION START */
+.popular-destinations-section {
+  color: white;
+  position: relative;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #0071e3;
+}
+.paris-text {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 37px;
+  position: relative;
+  line-height: 30px;
+  top: 8px;
+}
+.bali-text {
+  font-family: "Edu TAS Beginner", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 35px;
+  position: relative;
+  line-height: 30px;
+  top: 5px;
+}
+.newyork-text {
+  font-family: "New Tegomin", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 35px;
+  position: relative;
+  line-height: 30px;
+}
+/* POPULAR SECTION END */
