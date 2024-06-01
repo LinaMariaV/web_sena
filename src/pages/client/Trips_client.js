@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { getAllTrips, postTrip } from "../../services/trips.service";
+import { getAllTrips } from "../../services/trips.service";
 import { getAllCities } from "../../services/cities.service";
 import { deleteTrip } from "../../services/trips.service";
 import { postTrip } from "../../services/trips.service";
@@ -10,10 +11,13 @@ import { useState, useEffect } from "react";
 function Trips_client() {
   const tokenData = useSelector((state) => state.auth.token);
   const [trips, setTrips] = useState([]);
-  const [origin_city, setOrigin_city] = useState("")
-
-
-  
+  const [origin_city_id, setOrigin_city_id] = useState("");
+  const [destination_id, setDestination_id] = useState("");
+  const [user_id, setUser_id] = useState("");
+  const [start_date, setStart_date] = useState("");
+  const [end_date, setEnd_date] = useState("");
+  const [number_of_tickets, setNumber_of_tickets] = useState("");
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     if (!tokenData || tokenData === "") {
@@ -21,6 +25,7 @@ function Trips_client() {
     }
     getAllCities(tokenData)
       .then((rescities) => {
+        setCities(rescities.data);
         getAllTrips(tokenData)
           .then((restrips) => {
             for (let i = 0; i < restrips.data.length; i++) {
@@ -45,9 +50,7 @@ function Trips_client() {
       });
   }, [tokenData]);
 
-  const postTriprequest = (
-    
-  ) => {
+  const postTriprequest = () => {
     postTrip(
       tokenData,
       origin_city_id,
@@ -106,12 +109,16 @@ function Trips_client() {
                       <td>{trip.number_of_tickets}</td>
 
                       <td>
-                        <Button
+                        <button
+                          className="btn btn-primary me-3"
                           variant="danger"
                           onClick={() => deleteTriprequest(trip.id)}
                         >
-                          <FontAwesomeIcon icon="fa-solid fa-trash" />
-                        </Button>
+                          <FontAwesomeIcon icon="trash" />
+                        </button>
+                        <button className="btn btn-danger">
+                          <FontAwesomeIcon icon="edit" />
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -132,22 +139,25 @@ function Trips_client() {
                   className="me-2"
                   icon="fa-solid fa-plane-departure"
                 />
-                <Form.Control
-                  type="text"
-                  placeholder="Ciudad de Origen"
-                  className="w-100"
-                />
+
+                <Form.Select aria-label="Default select example">
+                  <option>Ciudad de origen</option>
+                  {cities.map((citi) => (
+                    <option value={citi.id}>{citi.name}</option>
+                  ))}
+                </Form.Select>
               </div>
               <div className="d-flex flex-row align-items-center flex-fill mb-3">
                 <FontAwesomeIcon
                   className="me-2"
                   icon="fa-solid fa-plane-arrival"
                 />
-                <Form.Control
-                  type="text"
-                  placeholder="Ciudad Destino"
-                  className="w-100"
-                />
+                <Form.Select aria-label="Default select example">
+                  <option>Ciudad destino</option>
+                  {cities.map((citi) => (
+                    <option value={citi.id}>{citi.name}</option>
+                  ))}
+                </Form.Select>
               </div>
               <div className="d-flex flex-row align-items-center flex-fill mb-3 me-xl-3">
                 <span className="fa-layers fa-fw fa-lg me-2">
@@ -159,7 +169,7 @@ function Trips_client() {
                   />
                 </span>
                 <Form.Control
-                  type="text"
+                  type="date"
                   placeholder="Fecha ida"
                   className="w-100"
                 />
@@ -174,7 +184,7 @@ function Trips_client() {
                   />
                 </span>
                 <Form.Control
-                  type="text"
+                  type="date"
                   placeholder="Fecha regreso"
                   className="w-100"
                 />

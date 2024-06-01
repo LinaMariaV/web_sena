@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
-import { getAllCities, deleteCity} from "../../services/cities.service";
-
+import { getAllCities, deleteCity } from "../../services/cities.service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Citiesadmin() {
   const tokenData = useSelector((state) => state.auth.token);
@@ -20,13 +20,11 @@ function Citiesadmin() {
       .catch((e) => {
         console.log("err", e);
       });
-
-    
   }, [tokenData]);
 
   return (
     <Row className="row gx-5 gy-3">
-      <Col xs={12} >
+      <Col xs={12}>
         <div className="card">
           <div className="card-body">
             <h5 className="text-center card-title">Cities</h5>
@@ -34,9 +32,9 @@ function Citiesadmin() {
               <thead>
                 <tr>
                   <th>Name</th>
-                    <th>Country</th>
-                    <th>Description</th>
-                    <th>Url imagen</th>
+                  <th>Country</th>
+                  <th>Description</th>
+                  <th>Url imagen</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -48,13 +46,12 @@ function Citiesadmin() {
                     <td>{city.description}</td>
                     <td>{city.url_image}</td>
                     <td>
-                      <Button
-                      
-                        variant="danger"
-                        //onClick={() => deleteCityrequest(city.id)}
-                      >
-                        Delete
-                      </Button>
+                      <button className="btn btn-primary me-3">
+                        <FontAwesomeIcon icon="edit" />
+                      </button>
+                      <button className="btn btn-danger ">
+                        <FontAwesomeIcon icon="trash" />
+                      </button>
                     </td>
                   </tr>
                 ))}
