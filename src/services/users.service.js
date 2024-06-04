@@ -26,18 +26,30 @@ const postUser = async (name, email, password, role) => {
   return response.data;
 };
 
-const putUser = async (id, name, email, password, role) => {
-  const response = await axios.put(API_URL + id, {
-    name,
-    email,
-    password,
-    role,
-  });
+const putUser = async (token, id, name, email, phone, role) => {
+  const response = await axios.put(
+    API_URL + id,
+    {
+      name,
+      email,
+      phone,
+      role,
+    },
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
   return response.data;
 };
 
-const deleteUser = async (id) => {
-  const response = await axios.delete(API_URL + id);
+const deleteUser = async (token, id) => {
+  const response = await axios.delete(API_URL + id, {
+    headers: {
+      Authorization: token,
+    },
+  });
   return response.data;
 };
 
