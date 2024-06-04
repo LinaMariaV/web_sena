@@ -17,7 +17,7 @@ function QuestionsSection() {
           <Col>
             <Card className="card-questions-icons">
               <FontAwesomeIcon
-                className="icons-home"
+                className="icons-question"
                 icon="fa-solid fa-dollar-sign"
               />
               <h3 className="text-center">¡Los mejores precios!</h3>
@@ -27,7 +27,7 @@ function QuestionsSection() {
           <Col>
             <Card className="card-questions-icons">
               <FontAwesomeIcon
-                className="icons-home"
+                className="icons-question"
                 icon="fa-solid fa-map-location-dot"
               />
               <h3 className="text-center">¡Los mejores destinos!</h3>
@@ -37,7 +37,7 @@ function QuestionsSection() {
           <Col>
             <Card className="card-questions-icons">
               <FontAwesomeIcon
-                className="icons-home"
+                className="icons-question"
                 icon="fa-solid fa-people-line"
               />
               <h3 className="text-center">¡La mejor atención!</h3>

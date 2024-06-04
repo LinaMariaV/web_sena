@@ -24,4 +24,9 @@
 .card-questions-icons:hover .fa-people-line {
   color: #0071e3;
 }
+
+.icons-question {
+  font-size: 104px;
+}
+
 /* QUESTIONS SECTION END */
