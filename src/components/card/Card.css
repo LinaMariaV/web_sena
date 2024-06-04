@@ -1,7 +1,12 @@
 .Cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding-top: 80px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 80px;
+}
+.img-card {
+  height: 200px;
+  object-position: center;
+  object-fit: cover;
+}

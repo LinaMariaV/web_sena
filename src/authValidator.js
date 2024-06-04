@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { loginAction, logoutAction } from "./storages/auth";
 import { getMe } from "./services/auth.service";
 
+const paths_allowed = ["/login", "/register", "/", "/destinations", "/info"];
+
 function AuthValidator() {
   const dispatch = useDispatch();
 
@@ -20,6 +22,10 @@ function AuthValidator() {
         .catch((e) => {
           console.log("err", e);
           dispatch(logoutAction());
+          let loc = window.location;
+          if (!paths_allowed.includes(loc.pathname)) {
+            window.location.href = "/login";
+          }
         });
     } else {
       dispatch(logoutAction());
