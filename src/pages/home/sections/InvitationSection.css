@@ -1,0 +1,8 @@
+.invitation-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 35px;
+  text-justify: center;
+}

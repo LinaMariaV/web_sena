@@ -1,12 +1,10 @@
-import Atentionsection from "./section_info/atention";  
+import Atentionsection from "./section_info/atention";
 
-function Info  ()  {
+function Info() {
   return (
     <div className="container mt-5">
-      <h1 className="mb-4" >
-        Información sobre la gestion de Viajes 
-      </h1>
-      <p className="lead" >
+      <h1 className="mb-4">Información sobre la gestion de Viajes</h1>
+      <p className="lead">
         Bienvenido a nuestra aplicación de viajes turísticos. Aquí podrás
         explorar una variedad de destinos y planificar tu viaje de manera
         sencilla.
@@ -14,19 +12,16 @@ function Info  ()  {
 
       <div className="row">
         <div className="col-md-6">
-          <h2 className="mt-4" >Destinos</h2>
+          <h2 className="mt-4">Destinos</h2>
           <p>
             En nuestra sección de destinos, podrás explorar una amplia gama de
-            lugares turísticos disponibles. Cada destino incluye una breve descripción
-             y foto para ayudarte a elegir tu próximo viaje.
+            lugares turísticos disponibles. Cada destino incluye una breve
+            descripción y foto para ayudarte a elegir tu próximo viaje.
           </p>
-          <img
-            alt="Imagen de destino turístico"
-            className="img-fluid mb-3"
-          />
+          <img alt="Imagen de destino turístico" className="img-fluid mb-3" />
         </div>
         <div className="col-md-6">
-          <h2 className="mt-4" >Planificación del Viaje</h2>
+          <h2 className="mt-4">Planificación del Viaje</h2>
           <h3>Dentro de las cosas que podras gestionar estan:</h3>
           <ul className="list-group mb-4">
             <li className="list-group-item">Ciudad de Origen</li>
@@ -37,17 +32,43 @@ function Info  ()  {
         </div>
       </div>
 
-      <h2 className="mt-4" >Detalles de Alojamiento</h2>
+      <h2 className="mt-4">Detalles de Alojamiento</h2>
       <p>
-        Para  agregar y personalizar los detalles de tu alojamiento u otros servicios
-        adicionales, por favor contacta a nuestro equipo de atención al cliente.
-        Estaremos encantados de asistirte para crear una experiencia de viaje a
-        tu medida.
+        Para agregar y personalizar los detalles de tu alojamiento u otros
+        servicios adicionales, por favor contacta a nuestro equipo de atención
+        al cliente. Estaremos encantados de asistirte para crear una experiencia
+        de viaje a tu medida.
       </p>
 
-      <Atentionsection/>
+      <Atentionsection />
+
+      <div className="faq-section">
+        <h2 className="text-center">Preguntas Frecuentes</h2>
+        <div className="faq-item">
+          <h3>¿Cómo puedo reservar un viaje?</h3>
+          <p>
+            Puedes reservar tu viaje fácilmente a través de nuestra plataforma
+            en línea. Solo elige tu destino, selecciona las fechas y sigue los
+            pasos indicados.
+          </p>
+        </div>
+        <div className="faq-item">
+          <h3>¿Qué métodos de pago aceptan?</h3>
+          <p>
+            Aceptamos todas las principales tarjetas de crédito, PayPal y
+            transferencias bancarias.
+          </p>
+        </div>
+        <div className="faq-item">
+          <h3>¿Puedo cancelar o modificar mi reserva?</h3>
+          <p>
+            Sí, ofrecemos opciones flexibles para cancelar o modificar tu
+            reserva. Consulta nuestra política de cancelación para más detalles.
+          </p>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Info;

@@ -37,45 +37,49 @@ function TestimonialsSection() {
     },
   ];
   return (
-    <div className="testimonials container mt-5">
-      <h2 className="text-center mb-4">Lo que dicen nuestros clientes</h2>
-      <Row className="g-4">
-        {testimonials_array.map((testimonial) => (
-          <Col sm={12} md={6} lg={4} key={testimonial.id}>
-            <div className="card testimonial">
-              <p className="testimonial-text">{testimonial.text}</p>
-              <div className="customer-name">
-                <div
-                  className={"customer-icon-name testimonial-" + testimonial.id}
-                >
-                  {testimonial.customer_name.charAt(0)}
+    <div className="container">
+      <div className="testimonials mt-5 pt-5">
+        <h2 className="text-center mb-5">Lo que dicen nuestros clientes</h2>
+        <Row className="g-4">
+          {testimonials_array.map((testimonial) => (
+            <Col sm={12} md={6} lg={4} key={testimonial.id}>
+              <div className="card testimonial">
+                <p className="testimonial-text">{testimonial.text}</p>
+                <div className="customer-name">
+                  <div
+                    className={
+                      "customer-icon-name testimonial-" + testimonial.id
+                    }
+                  >
+                    {testimonial.customer_name.charAt(0)}
+                  </div>
+                  {testimonial.customer_name}
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning ms-2"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-star"
+                    className="text-warning"
+                  />
                 </div>
-                {testimonial.customer_name}
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  className="text-warning ms-2"
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  className="text-warning"
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  className="text-warning"
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  className="text-warning"
-                />
-                <FontAwesomeIcon
-                  icon="fa-solid fa-star"
-                  className="text-warning"
-                />
               </div>
-            </div>
-          </Col>
-        ))}
-      </Row>
+            </Col>
+          ))}
+        </Row>
+      </div>
     </div>
   );
 }

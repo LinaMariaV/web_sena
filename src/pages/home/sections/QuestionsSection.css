@@ -1,0 +1,27 @@
+/* QUESTIONS SECTION START */
+.card-questions-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.card-questions-icons svg {
+  transition: all 0.5s;
+  filter: drop-shadow(0 0 0.75rem #fff);
+}
+.card-questions-icons:hover svg {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 0.75rem #dfdfdf);
+}
+.card-questions-icons:hover .fa-dollar-sign {
+  color: #e3d400;
+}
+
+.card-questions-icons:hover .fa-map-location-dot {
+  color: #03c100;
+}
+
+.card-questions-icons:hover .fa-people-line {
+  color: #0071e3;
+}
+/* QUESTIONS SECTION END */
