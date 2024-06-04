@@ -1,0 +1,64 @@
+.info-container {
+  padding: 20px;
+  background-color: #f8f9fa; /* Fondo suave */
+  font-family: 'Arial', sans-serif; /* Fuente consistente */
+}
+
+.info-container h1, .info-container h2, .info-container h3 {
+  color: #955f1d; /* Color consistente */
+  text-align: center; /* Alinear títulos al centro */
+}
+
+.info-container p.lead {
+  font-size: 1.25rem; /* Tamaño de fuente más grande */
+  margin-bottom: 1.5rem;
+}
+
+.info-section {
+  margin-bottom: 3rem; /* Separar secciones */
+}
+
+.info-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-container .list-group-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.info-container .list-group-item:hover {
+  background-color: #f1f1f1;
+}
+
+.faq-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.faq-item h3 {
+  font-size: 1.5rem;
+}
+
+.atention-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.atention-section .list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.atention-section .list-group-item:hover {
+  background-color: #f1f1f1;
+}
