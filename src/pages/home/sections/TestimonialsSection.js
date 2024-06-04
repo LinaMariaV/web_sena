@@ -38,7 +38,7 @@ function TestimonialsSection() {
   ];
   return (
     <div className="container">
-      <div className="testimonials mt-5 pt-5">
+      <div className="testimonials mt-5 pt-5 mb-5 pb-5">
         <h2 className="text-center mb-5">Lo que dicen nuestros clientes</h2>
         <Row className="g-4">
           {testimonials_array.map((testimonial) => (

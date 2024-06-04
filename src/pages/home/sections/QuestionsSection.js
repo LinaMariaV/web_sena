@@ -6,8 +6,8 @@ import "./QuestionsSection.css";
 
 function QuestionsSection() {
   return (
-    <div className="container">
-      <div className="mt-5 pt-4">
+    <div className="question-section">
+      <div className="container mt-5 pt-4">
         <Row>
           <Col>
             <h2 className="text-center mb-5">¿Por qué viajar con nosotros?</h2>

@@ -9,7 +9,7 @@ function Layout() {
   if (location.pathname === "/") {
     return (
       <>
-        <NavigationBarHome />
+        <NavigationBar className="bg-body-tertiary fixed-top" />
         <Outlet />
         <Footer />
       </>

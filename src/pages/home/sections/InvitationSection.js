@@ -1,32 +1,41 @@
 import "./InvitationSection.css";
+import travel_image from "../../../assets/travel-with-us.png";
+import { useSelector } from "react-redux";
+import ButtonsSection from "../sections/ButtonsSection";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function InvitationSection() {
+  const loginstatus = useSelector((state) => state.auth.is_logged);
   return (
     <div className="invitation-home">
-      <div className="row">
-        <div className="col-12 col-sm-6">
-          <p>
-            Planear tu próximo viaje con nosotros es una experiencia sencilla y
-            enriquecedora. Nuestro equipo de expertos está comprometido a
-            ayudarte a descubrir destinos únicos y crear experiencias
-            inolvidables. Con nuestra plataforma intuitiva, puedes comparar
-            precios, elegir entre una amplia gama de opciones y personalizar
-            cada aspecto de tu viaje según tus preferencias y presupuesto.
-          </p>
+      <div className="row row-invitation">
+        <div className="col-12 col-sm-6 justify-content-center d-flex flex-column">
+          <h1 className="text-center fw-bold title-invitation">
+            ¡Planea tu proximo viaje con nosotros!
+          </h1>
+          <div className="text-center mb-2 mt-2 fs-4">
+            Tenemos los mejores destinos y precios para ti.
+          </div>
+          <div className="text-center mb-5 fs-4">
+            Estamos a solo un click de distancia.
+          </div>
+          {!loginstatus && <ButtonsSection />}
         </div>
-        <div className="col-12 col-sm-6">
-          <p>
-            En nuestra sección de destinos, puedes explorar lugares emocionantes
-            y agregar los detalles de tu viaje, como la fecha de salida y
-            regreso, y el número de tiquetes. Para los servicios de alojamiento
-            y actividades adicionales, nuestros agentes virtuales están
-            disponibles para ofrecerte una atención personalizada.
-          </p>
-          <p>
-            Nota: Para agregar y gestionar viajes, es necesario que estés
-            registrado en nuestra plataforma.
-          </p>
+        <div className="col-12 col-sm-6 justify-content-center d-flex flex-column">
+          <img
+            src={travel_image}
+            alt="Travel with us"
+            className="travel-with-us"
+          />
         </div>
+      </div>
+      <div>
+        <a href="#read-more" className="text-decoration-none">
+          <h2 id="read-more" className="text-center d-flex flex-column mb-2">
+            <span className="fs-6">Leer mas</span>
+            <FontAwesomeIcon icon="fa-solid fa-chevron-down" />
+          </h2>
+        </a>
       </div>
     </div>
   );

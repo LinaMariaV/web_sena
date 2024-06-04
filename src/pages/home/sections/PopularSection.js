@@ -7,7 +7,7 @@ import "./PopularSection.css";
 
 function PopularSection() {
   return (
-    <div className="popular-destinations-section">
+    <div id="popular-section" className="popular-destinations-section">
       <div className="container pt-4">
         <h2 className="text-center mb-4">Destinos Populares</h2>
         <Row className="g-4">

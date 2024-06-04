@@ -1,4 +1,12 @@
 /* QUESTIONS SECTION START */
+.question-section {
+  color: white;
+  position: relative;
+  padding-top: .5rem;
+  padding-bottom: 4rem;
+  margin-bottom: 1rem;
+  background-color: #0071e3;
+}
 .card-questions-icons {
   display: flex;
   justify-content: center;
