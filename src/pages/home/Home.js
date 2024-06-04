@@ -1,5 +1,4 @@
 import "./Home.css";
-import "../../components/card/Card.css";
 import InvitationSection from "./sections/InvitationSection";
 import { useSelector } from "react-redux";
 import ButtonsSection from "./sections/ButtonsSection";

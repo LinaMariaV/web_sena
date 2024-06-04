@@ -1,0 +1,16 @@
+.image-registration {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  transition: all 0.3s;
+  filter: drop-shadow(0 0 0rem #cfcfcf);
+}
+
+.image-registration:hover {
+  transform: scale(1.5) rotate(-10deg) translate(30px, 0px);
+  filter: drop-shadow(0 0 0.1rem #cfcfcf);
+}
+
+.list-group-item:nth-child(2) .image-registration:hover {
+  transform: scale(1.5) rotate(10deg) translate(-30px, 0px);
+}

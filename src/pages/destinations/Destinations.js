@@ -1,5 +1,4 @@
 import "./Destinations.css";
-import "../../components/card/Card.css";
 import CardI from "../../components/card/Card";
 import { getAllCities } from "../../services/cities.service";
 import { useEffect, useState } from "react";
