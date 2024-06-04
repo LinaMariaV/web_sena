@@ -22,12 +22,9 @@
   }
 }
 
-
 .button-navigation {
   padding: 24px 0px;
 }
-
-
 
 .container-margin {
   margin: 0 90px;
@@ -37,7 +34,14 @@
   left: -30px;
 }
 
-.zize-title{
+.zize-title {
   margin-bottom: 42px;
   margin-top: 56px;
+}
+
+.title-home {
+  display: flex;
+  align-items: center;
+  font-size: 6rem;
+  flex-direction: column;
 }
