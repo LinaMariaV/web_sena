@@ -36,13 +36,16 @@ function Destinations() {
               image={city.url_image}
               title={city.name}
               text={city.description}
-              button="Ver detalles"
+              button="Reservar"
+              onClick={() => {window.location.href = "/login"}}
             />
           </div>
         ))}
       </div>
       <div className="Button-container">
-        <ButtonComponent text="Planea tu viaje" />
+        <ButtonComponent text="Planea tu viaje" 
+                onClick={() => {window.location.href = "/login"}}
+                />
       </div>
     </div>
   );
