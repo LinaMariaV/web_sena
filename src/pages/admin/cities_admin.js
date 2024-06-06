@@ -81,7 +81,7 @@ function Citiesadmin() {
               </Modal.Header>
               <Modal.Body>
                 <div className="d-flex flex-row align-items-center mb-4 ">
-                  <FontAwesomeIcon className="me-2" icon="fa-solid fa-user" />
+                  <FontAwesomeIcon className="me-2" icon="fa-solid fa-city" />
                   <Form.Control
                     type="text"
                     placeholder="Nombre de la ciudad"
@@ -96,7 +96,7 @@ function Citiesadmin() {
                 <div className="d-flex flex-row align-items-center mb-4">
                   <FontAwesomeIcon
                     className="me-2"
-                    icon="fa-solid fa-envelope"
+                    icon="fa-solid fa-map-marker-alt"
                   />
                   <Form.Control
                     type="text"
@@ -111,7 +111,7 @@ function Citiesadmin() {
                 <div className="d-flex flex-row align-items-center mb-4">
                   <FontAwesomeIcon
                     className="me-2"
-                    icon="fa-solid fa-envelope"
+                    icon="fa-solid fa-file-alt"
                   />
                   <Form.Control
                     type="text"
@@ -124,13 +124,13 @@ function Citiesadmin() {
                 </div>
 
                 <div className="d-flex flex-row align-items-center mb-4">
-                  <FontAwesomeIcon className="me-2" icon="fa-solid fa-phone" />
+                  <FontAwesomeIcon className="me-2" icon="fa-solid fa-link" />
                   <Form.Control
                     type="text"
                     placeholder="Url de imagen"
                     value={cityEdit.url_image}
                     onChange={(e) =>
-                      setCityEdit({ ...cityEdit, phone: e.target.value })
+                      setCityEdit({ ...cityEdit, url_image: e.target.value })
                     }
                   />
                 </div>
@@ -164,6 +164,7 @@ function Citiesadmin() {
                     <td>{city.description}</td>
                     <td>{city.url_image}</td>
                     <td>
+                      <div className=" text-center">
                       <button
                         className="btn btn-primary me-3"
                         onClick={() => handleShow(city)}
@@ -176,6 +177,7 @@ function Citiesadmin() {
                       >
                         <FontAwesomeIcon icon="trash" />
                       </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
