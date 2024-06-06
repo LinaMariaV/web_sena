@@ -8,33 +8,32 @@ import { Col, Table } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { Button, Row, Form } from "react-bootstrap";
 
-
 function Trips_admin() {
   const tokenData = useSelector((state) => state.auth.token);
   const [trips, setTrips] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [cities, setCities] = useState([]);
   const [tripEdit, setTripEdit] = useState({});
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+
   const handleShow = (trip) => {
     setTripEdit(trip);
     setShow(true);
   };
-
-  useEffect(() => {
-    if (!tokenData || tokenData === "") {
-      return;
-    }
-
+  const getAllTriprequest = () => {
     getAllUsers(tokenData)
       .then((resusers) => {
+        setUsers(resusers.data);
         getAllCities()
           .then((rescities) => {
+            setCities(rescities.data);
             getAllTrips(tokenData)
               .then((restrips) => {
                 for (let i = 0; i < restrips.data.length; i++) {
                   for (let j = 0; j < resusers.data.length; j++) {
                     if (restrips.data[i].user_id === resusers.data[j].id) {
-                      restrips.data[i].user_id = resusers.data[j].name;
+                      restrips.data[i].user_name = resusers.data[j].name;
                     }
                   }
                 }
@@ -44,12 +43,14 @@ function Trips_admin() {
                     if (
                       restrips.data[i].origin_city_id === rescities.data[j].id
                     ) {
-                      restrips.data[i].origin_city_id = rescities.data[j].name;
+                      restrips.data[i].origin_city_name =
+                        rescities.data[j].name;
                     }
                     if (
                       restrips.data[i].destination_id === rescities.data[j].id
                     ) {
-                      restrips.data[i].destination_id = rescities.data[j].name;
+                      restrips.data[i].destination_name =
+                        rescities.data[j].name;
                     }
                   }
                 }
@@ -67,14 +68,22 @@ function Trips_admin() {
       .catch((e) => {
         console.log("err", e);
       });
+  };
+
+  useEffect(() => {
+    if (!tokenData || tokenData === "") {
+      return;
+    }
+    getAllTriprequest();
   }, [tokenData]);
 
   const putTriprequest = () => {
     putTrip(
       tokenData,
-      tripEdit.user_id,
+      tripEdit.id,
       tripEdit.origin_city_id,
       tripEdit.destination_id,
+      tripEdit.user_id,
       tripEdit.start_date,
       tripEdit.end_date,
       tripEdit.number_of_tickets
@@ -83,7 +92,7 @@ function Trips_admin() {
         console.log(res);
         setTripEdit({});
         handleClose();
-        getAllTrips();
+        getAllTriprequest();
       })
 
       .catch((e) => {
@@ -102,6 +111,7 @@ function Trips_admin() {
       });
   };
 
+  console.log("edit", tripEdit);
   return (
     <Row className="row gx-5 gy-3">
       <Col xs={12}>
@@ -110,61 +120,137 @@ function Trips_admin() {
             <h5 className="text-center card-title">Viajes</h5>
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Editar usuario</Modal.Title>
+                <Modal.Title>Editar viaje {tripEdit.id}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div className="d-flex flex-row align-items-center mb-4 ">
                   <FontAwesomeIcon className="me-2" icon="fa-solid fa-user" />
-                  <Form.Control
-                    type="text"
-                    placeholder="Nombre completo"
-                    className="w-100"
-                    value={tripEdit.name}
+
+                  <Form.Select
+                    aria-label="Nombre de usuario"
                     onChange={(e) =>
-                      setTripEdit({ ...tripEdit, name: e.target.value })
+                      setTripEdit({
+                        ...tripEdit,
+                        user_id: e.target.value,
+                      })
                     }
+                    value={tripEdit.user_id}
+                  >
+                    <option>Nombre de usuario</option>
+                    {users.map((user) => (
+                      <option key={"user-" + user.id} value={user.id}>
+                        {user.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </div>
+
+                <div className="d-flex flex-row align-items-center mb-4 ">
+                  <FontAwesomeIcon
+                    className="me-2"
+                    icon="fa-solid fa-plane-departure"
                   />
+
+                  <Form.Select
+                    aria-label="Ciudad de origen"
+                    onChange={(e) =>
+                      setTripEdit({
+                        ...tripEdit,
+                        origin_city_id: e.target.value,
+                      })
+                    }
+                    value={tripEdit.origin_city_id}
+                  >
+                    <option>Ciudad de origen</option>
+                    {cities.map((citi) => (
+                      <option key={"citi-" + citi.id} value={citi.id}>
+                        {citi.name}
+                      </option>
+                    ))}
+                  </Form.Select>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <FontAwesomeIcon
                     className="me-2"
-                    icon="fa-solid fa-envelope"
+                    icon="fa-solid fa-plane-arrival"
                   />
-                  <Form.Control
-                    type="email"
-                    placeholder="Email"
-                    value={tripEdit.email}
+                  <Form.Select
+                    aria-label="Ciudad de destino"
                     onChange={(e) =>
-                      setTripEdit({ ...tripEdit, email: e.target.value })
+                      setTripEdit({
+                        ...tripEdit,
+                        destination_id: e.target.value,
+                      })
                     }
+                    value={tripEdit.destination_id}
+                  >
+                    <option>Ciudad de destino</option>
+                    {cities.map((citi) => (
+                      <option key={"citi2-" + citi.id} value={citi.id}>
+                        {citi.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </div>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <span className="fa-layers fa-fw fa-lg me-2">
+                    <FontAwesomeIcon icon="fa-solid fa-calendar" />
+                    <FontAwesomeIcon
+                      icon="fa-solid fa-square"
+                      transform="shrink-12 left-3 down-1"
+                      inverse
+                    />
+                  </span>
+                  <Form.Control
+                    type="date"
+                    title="Fecha ida"
+                    placeholder="Fecha ida"
+                    className="w-100"
+                    onChange={(e) =>
+                      setTripEdit({ ...tripEdit, start_date: e.target.value })
+                    }
+                    value={tripEdit.start_date}
                   />
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
-                  <FontAwesomeIcon className="me-2" icon="fa-solid fa-phone" />
+                  <span className="fa-layers fa-fw fa-lg me-2">
+                    <FontAwesomeIcon icon="fa-solid fa-calendar" />
+                    <FontAwesomeIcon
+                      icon="fa-solid fa-square"
+                      transform="shrink-12 right-3 down-5"
+                      inverse
+                    />
+                  </span>
                   <Form.Control
-                    type="number"
-                    placeholder="Telefono"
-                    value={tripEdit.phone}
+                    type="date"
+                    title="Fecha regreso"
+                    placeholder="Fecha regreso"
+                    className="w-100"
                     onChange={(e) =>
-                      setTripEdit({ ...tripEdit, phone: e.target.value })
+                      setTripEdit({ ...tripEdit, end_date: e.target.value })
                     }
+                    value={tripEdit.end_date}
                   />
                 </div>
-                <Form.Select
-                  aria-label="Default select example"
-                  value={tripEdit.role}
-                  onChange={(e) =>
-                    setTripEdit({ ...tripEdit, role: e.target.value })
-                  }
-                >
-                  <option>Selecciona el rol</option>
-                  <option value="admin">Administrador</option>
-                  <option value="client">Cliente</option>
-                </Form.Select>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <FontAwesomeIcon className="me-2" icon="fa-solid fa-ticket" />
+                  <Form.Control
+                    type="number"
+                    placeholder="Numero de Tickets"
+                    className="w-100"
+                    onChange={(e) =>
+                      setTripEdit({
+                        ...tripEdit,
+                        number_of_tickets: e.target.value,
+                      })
+                    }
+                    value={tripEdit.number_of_tickets}
+                  />
+                </div>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                  Cerrar
+                  Cancelar
                 </Button>
                 <Button variant="primary" onClick={putTriprequest}>
                   Guardar cambios
@@ -187,19 +273,19 @@ function Trips_admin() {
               </thead>
               <tbody>
                 {trips.map((trip) => (
-                  <tr key={trip.id}>
+                  <tr key={"trip-" + trip.id}>
                     <th scope="row">{trip.id}</th>
-                    <td>{trip.user_id}</td>
-                    <td>{trip.origin_city_id}</td>
-                    <td>{trip.destination_id}</td>
+                    <td>{trip.user_name}</td>
+                    <td>{trip.origin_city_name}</td>
+                    <td>{trip.destination_name}</td>
                     <td>{trip.start_date}</td>
                     <td>{trip.end_date}</td>
                     <td>{trip.number_of_tickets}</td>
-                    <div className="flex-row d-flex">
-                      <td className="text-center  ">
+                    <td className="text-center  ">
+                      <div className="flex-row d-flex">
                         <button
                           className="btn btn-primary me-3"
-                          onClick={() => putTriprequest(trip.id)}
+                          onClick={() => handleShow(trip)}
                         >
                           <FontAwesomeIcon icon="edit" />
                         </button>
@@ -209,8 +295,8 @@ function Trips_admin() {
                         >
                           <FontAwesomeIcon icon="trash" />
                         </button>
-                      </td>
-                    </div>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
