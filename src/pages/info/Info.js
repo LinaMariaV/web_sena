@@ -30,10 +30,10 @@ function Info() {
           />
         </Col>
       </Row>
-
+      <div className="card">
       <Row>
-        <Col>
-          <div className="info-section">
+        <Col >
+          <div className="info-section px-3">
             <h2 className="text-center mt-5">Planificación del Viaje</h2>
             <p className="text-justify">
               Gestiona todos los aspectos de tu viaje, desde la ciudad de origen
@@ -47,8 +47,9 @@ function Info() {
             </ul>
           </div>
         </Col>
-        <Col>
-          <div className="info-section">
+        <Col >
+        
+          <div className="info-section px-3">
             <h2 className="text-center mt-5">Detalles de Alojamiento</h2>
             <p className="text-justify">
               Personaliza los detalles de tu alojamiento y otros servicios
@@ -63,6 +64,7 @@ function Info() {
           </div>
         </Col>
       </Row>
+      </div>
 
       <div className="faq-section mt-5">
         <h2 className="text-center mb-4">Preguntas Frecuentes</h2>
