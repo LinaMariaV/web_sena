@@ -34,7 +34,6 @@ function Trips_client() {
     setTripEdit(trip);
     setShow(true);
   };
-
   const getAllTripsRequest = () => {
     getAllCities()
       .then((rescities) => {
@@ -133,11 +132,12 @@ function Trips_client() {
       .catch((e) => {
         console.log("err", e);
         setErrorEdit(
-          "Hubo un error al editar el viaje: " + e.response.data.message
+          "Hubo un error al editar el viaje debe llenar todos los campos: " + e.response.data.message
         );
       });
   };
 
+  
   return (
     <Row className="row gx-5 gy-3">
       <Col xs={12} md={6}>
