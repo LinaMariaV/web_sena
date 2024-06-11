@@ -29,6 +29,10 @@ function AuthValidator() {
         });
     } else {
       dispatch(logoutAction());
+      let loc = window.location;
+      if (!paths_allowed.includes(loc.pathname)) {
+        window.location.href = "/login";
+      }
     }
   }, []);
   return null;
