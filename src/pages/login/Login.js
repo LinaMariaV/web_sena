@@ -97,7 +97,7 @@ function Login() {
               <img
                 className="w-100"
                 src={register}
-                alt="image to form register"
+                alt="to form register"
               />
             </Col>
           </Row>

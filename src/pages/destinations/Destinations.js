@@ -3,9 +3,12 @@ import CardI from "../../components/card/Card";
 import { getAllCities } from "../../services/cities.service";
 import { useEffect, useState } from "react";
 import ButtonComponent from "../../components/button/Button";
+import { useSelector } from "react-redux";
 
 function Destinations() {
   const [cities, setCities] = useState([]);
+  const loginstatus = useSelector((state) => state.auth.is_logged);
+  const user_role = useSelector((state) => state.auth.user.role);
 
   const getAllCitiesRequest = () => {
     getAllCities()
@@ -37,15 +40,28 @@ function Destinations() {
               title={city.name}
               text={city.description}
               button="Reservar"
-              onClick={() => {window.location.href = "/login"}}
+              onClick={() => {
+                if (loginstatus) {
+                  if (user_role === "client") {
+                    window.location.href = "/trips_client";
+                  } else {
+                    window.location.href = "/trips_admin";
+                  }
+                } else {
+                  window.location.href = "/login";
+                }
+              }}
             />
           </div>
         ))}
       </div>
       <div className="Button-container">
-        <ButtonComponent text="Planea tu viaje" 
-                onClick={() => {window.location.href = "/login"}}
-                />
+        <ButtonComponent
+          text="Planea tu viaje"
+          onClick={() => {
+            window.location.href = "/login";
+          }}
+        />
       </div>
     </div>
   );
