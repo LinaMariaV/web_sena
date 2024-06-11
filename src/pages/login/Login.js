@@ -86,7 +86,7 @@ function Login() {
                 </div>
               ) : null}
 
-              <a href="/register"> ¿No tienes cuenta? Regístrate </a>
+              <a href="/register"> ¿No tienes cuenta? Regístrate dando click aqui</a>
             </Col>
 
             <Col
