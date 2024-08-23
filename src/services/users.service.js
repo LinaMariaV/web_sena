@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:3001/api/users/";
+const API_URL = "https://api-travel.linavillalba.me/api/users/";
 
 const getAllUsers = async (token) => {
   const response = await axios.get(API_URL, {

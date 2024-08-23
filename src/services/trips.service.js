@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3001/api/trips/";
+const API_URL = "https://api-travel.linavillalba.me/api/trips/";
 
 const getAllTrips = async (token) => {
   const response = await axios.get(API_URL, {
