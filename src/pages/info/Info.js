@@ -47,6 +47,7 @@ function Info() {
             </ul>
           </div>
         </Col>
+        
         <Col >
         
           <div className="info-section px-3">
