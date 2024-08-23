@@ -26,6 +26,7 @@ import Info from "./pages/info/Info";
 import NoPage from "./pages/nopage/NoPage";
 import CitiesAdmin from "./pages/admin/cities_admin";
 import Useradmin from "./pages/admin/users_admin";
+import Add_trips from "./pages/client/Add_trips";
 
 // Fontawesome
 library.add(fas, fab, far);
@@ -44,6 +45,7 @@ root.render(
             <Route path="/users_admin" element={<Useradmin />} />
             <Route path="/trips_client" element={<TripsClient />} />
             <Route path="/trips_admin" element={<TripsAdmin />} />
+            <Route path="/add_trips" element={<Add_trips/>}/>
             <Route path="/cities_admin" element={<CitiesAdmin/>} />
             <Route path="/info" element={<Info/>}/>
             <Route path="/login" element={<Login />} />

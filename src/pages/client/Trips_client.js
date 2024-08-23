@@ -25,6 +25,7 @@ function Trips_client() {
   const [errorEdit, setErrorEdit] = useState(undefined);
   const [show, setShow] = useState(false);
   const [tripEdit, setTripEdit] = useState({});
+  
 
   const handleClose = () => {
     setTripEdit({});
@@ -34,33 +35,33 @@ function Trips_client() {
     setTripEdit(trip);
     setShow(true);
   };
-  const getAllTripsRequest = () => {
-    getAllCities()
-      .then((rescities) => {
-        setCities(rescities.data);
-        getAllTrips(tokenData)
-          .then((restrips) => {
-            for (let i = 0; i < restrips.data.length; i++) {
-              for (let j = 0; j < rescities.data.length; j++) {
-                if (restrips.data[i].origin_city_id === rescities.data[j].id) {
-                  restrips.data[i].origin_city_id = rescities.data[j].name;
-                }
-                if (restrips.data[i].destination_id === rescities.data[j].id) {
-                  restrips.data[i].destination_id = rescities.data[j].name;
+    const getAllTripsRequest = () => {
+      getAllCities()
+        .then((rescities) => {
+          setCities(rescities.data);
+          getAllTrips(tokenData)
+            .then((restrips) => {
+              for (let i = 0; i < restrips.data.length; i++) {
+                for (let j = 0; j < rescities.data.length; j++) {
+                  if (restrips.data[i].origin_city_id === rescities.data[j].id) {
+                    restrips.data[i].origin_city_id = rescities.data[j].name;
+                  }
+                  if (restrips.data[i].destination_id === rescities.data[j].id) {
+                    restrips.data[i].destination_id = rescities.data[j].name;
+                  }
                 }
               }
-            }
-            console.log(restrips.data);
-            setTrips(restrips.data);
-          })
-          .catch((e) => {
-            console.log("err", e);
-          });
-      })
-      .catch((e) => {
-        console.log("err", e);
-      });
-  };
+              console.log(restrips.data);
+              setTrips(restrips.data);
+            })
+            .catch((e) => {
+              console.log("err", e);
+            });
+        })
+        .catch((e) => {
+          console.log("err", e);
+        });
+    };
 
   useEffect(() => {
     if (!tokenData || tokenData === "") {
