@@ -16,7 +16,7 @@ function Register() {
   const registerRequest = () => {
     setError(false);
     setSuccess(false);
-    postRegister(name, email, phone, password)
+    postRegister(name, email, password, phone)
       .then((res) => {
         console.log("res", res);
         setSuccess(true);
