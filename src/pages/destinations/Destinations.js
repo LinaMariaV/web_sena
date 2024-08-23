@@ -28,7 +28,7 @@ function Destinations() {
   return (
     <div className="Destinations">
       <div>
-        <h1 className="text-center my-5">
+        <h1 className="text-center my-">
           Conoce algunos los destinos disponibles
         </h1>
       </div>

@@ -52,9 +52,16 @@ function NavigationBar({ className, enableTitle = true }) {
                     </NavDropdown.Item>
                   </>
                 ) : (
-                  <NavDropdown.Item href="/trips_client">
-                    Mis viajes
+                  <>
+                  <NavDropdown.Item href="/add_trips">
+                    Buscar vuelos
                   </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/trips_client">
+                    Mis reservas
+                  </NavDropdown.Item>
+                  </>
+                  
                 )}
 
                 <NavDropdown.Divider />
